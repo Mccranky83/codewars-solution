@@ -1,6 +1,7 @@
-const isTriangle = (a, b, c) => {
-  let arr = [a, b, c].sort((a, b) => a - b);
-  if (arr.some((t) => t < 0)) return false;
-  return arr[0] + arr[1] > arr[2] && arr[2] - arr[0] < arr[1];
-};
+const isTriangle = (a, b, c) =>
+  Array.from([a, b, c].sort((a, b) => a - b)).reduce((acc, cur, i) =>
+    i - 2 ? acc + cur : acc - cur,
+  ) > 0
+    ? true
+    : false;
 console.log(isTriangle(10, 5, 2));
